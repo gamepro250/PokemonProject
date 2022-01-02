@@ -1,5 +1,5 @@
 package types;
-import app.Main;
+import application.Main;
 public class Matchups 
 {
 	//Total number of different types
