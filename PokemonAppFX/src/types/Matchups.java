@@ -1,5 +1,4 @@
 package types;
-import application.Main;
 public class Matchups 
 {
 	//Total number of different types
@@ -246,4 +245,38 @@ public class Matchups
 		return output ;
 	}
 	
+	public static String getMultiplyer(double effective)
+	{
+		if(effective == 4.0)
+		{
+			return "x4" ;
+		}
+		else if(effective == 2.0)  {
+			return "x2" ;
+		}
+		else if (effective == 1.0) {
+			return "x1" ;
+		}
+		else if (effective == 0.5) {
+			return "x0.5" ;
+		}
+		else if (effective == 0.25) {
+			return "x0.25" ;
+		}
+		else {
+			return "x0" ;
+		}
+	}
 }
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchResultController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="newSearchButton" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
+              <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="bugEffect" layoutX="795.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="darkEffect" layoutX="795.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="dragonEffect" layoutX="795.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="electricEffect" layoutX="795.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="fairyEffect" layoutX="795.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="fireEffect" layoutX="795.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="ghostEffect" layoutX="975.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="grassEffect" layoutX="975.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="fightingEffect" layoutX="975.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="iceEffect" layoutX="975.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="groundEffect" layoutX="975.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="flyingEffect" layoutX="975.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="waterEffect" layoutX="1155.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="normalEffect" layoutX="1155.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="psychicEffect" layoutX="1155.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="rockEffect" layoutX="1155.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="steelEffect" layoutX="1155.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="poisonEffect" layoutX="1155.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="715.0" layoutY="492.0" text="Bug">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="715.0" layoutY="522.0" text="Dark">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="715.0" layoutY="552.0" text="Dragon">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="715.0" layoutY="582.0" text="Electric">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="715.0" layoutY="612.0" text="Fairy">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="715.0" layoutY="642.0" text="Fire">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="582.0" text="Ghost">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="522.0" text="Flying">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="552.0" text="Grass">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="492.0" text="Fighting">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="642.0" text="Ice">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="895.0" layoutY="612.0" text="Ground">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="552.0" text="Poison">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="492.0" text="Normal">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="642.0" text="Steel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="522.0" text="Water">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="612.0" text="Rock">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1075.0" layoutY="582.0" text="Psychic">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="pokeName" layoutX="44.0" layoutY="44.0" prefHeight="30.0" prefWidth="158.0" text="Pokename">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="pokeType" layoutX="44.0" layoutY="194.0" prefHeight="30.0" prefWidth="53.0" text="Type:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="primaryType" layoutX="113.0" layoutY="194.0" prefHeight="30.0" prefWidth="80.0" text="Type 1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="SecondaryType" layoutX="208.0" layoutY="194.0" prefHeight="30.0" prefWidth="79.0" text="Type 2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="ability1Label" layoutX="610.0" layoutY="50.0" text="Ability">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondaryAbilityLabel" layoutX="610.0" layoutY="100.0" text="Ability 2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="hiddenAbilityLabel" layoutX="611.0" layoutY="150.0" text="Hidden Ability">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="hiddenAbilityLabelText" layoutX="800.0" layoutY="150.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="primaryAbilityLabelText" layoutX="800.0" layoutY="50.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondaryAbilityLabelText" layoutX="800.0" layoutY="100.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defensive Effectiveness" wrappingWidth="178.13671875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
+            <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x1 = Effective" wrappingWidth="110.13671875" />
+            <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
+            <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0 = No Effect" wrappingWidth="110.13671875" />
+            <Label layoutX="44.0" layoutY="351.0" text="Evolution">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="evolutionMethod" editable="false" layoutX="61.0" layoutY="394.0" prefHeight="302.0" prefWidth="326.0" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <Label layoutX="412.0" layoutY="394.0" text="Has Mega">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fx:id="hasMega" layoutX="428.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mega" wrappingWidth="48.22265625">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="nationDexNum" layoutX="204.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" wrappingWidth="86.89453125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

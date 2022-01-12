@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane fx:id="mainWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSearchController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="searchField" layoutX="226.0" layoutY="233.0" promptText="Enter Search" />
+            <Button fx:id="searchButton" layoutX="274.0" layoutY="285.0" mnemonicParsing="false" onAction="#executeSearch" text="Search" />
+            <RadioButton fx:id="numberSearch" layoutX="230.0" layoutY="155.0" mnemonicParsing="false" selected="true" text="Number">
+               <toggleGroup>
+                  <ToggleGroup fx:id="searchType" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="nameSearch" layoutX="230.0" layoutY="135.0" mnemonicParsing="false" selected="true" text="Name" toggleGroup="$searchType" />
+            <Text layoutX="230.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search By:" />
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <Label fx:id="errorMessage" prefHeight="17.0" prefWidth="602.0" text="" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
