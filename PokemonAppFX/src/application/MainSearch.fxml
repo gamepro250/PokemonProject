@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane fx:id="mainWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSearchController">
-   <top>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeProgram" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="searchField" layoutX="226.0" layoutY="233.0" promptText="Enter Search" />
-            <Button fx:id="searchButton" layoutX="274.0" layoutY="285.0" mnemonicParsing="false" onAction="#executeSearch" text="Search" />
-            <RadioButton fx:id="numberSearch" layoutX="230.0" layoutY="155.0" mnemonicParsing="false" selected="true" text="Number">
-               <toggleGroup>
-                  <ToggleGroup fx:id="searchType" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="nameSearch" layoutX="230.0" layoutY="135.0" mnemonicParsing="false" selected="true" text="Name" toggleGroup="$searchType" />
-            <Text layoutX="230.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search By:" />
-         </children>
-      </AnchorPane>
-   </center>
-   <bottom>
-      <Label fx:id="errorMessage" prefHeight="17.0" prefWidth="602.0" text="" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+<GridPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="638.0" style="-fx-background-color: #22313F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSearchController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8DC6FF; -fx-font-family: Verdana; -fx-font-size: 16;" text="Search By:" translateX="-10.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <RadioButton fx:id="nameSearch" mnemonicParsing="false" selected="true" style="-fx-text-fill: #FFFFFF;" text="Name" translateX="-12.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <toggleGroup>
+            <ToggleGroup fx:id="searchType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="numberSearch" mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" text="Number" toggleGroup="$searchType" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8DC6FF; -fx-font-family: Verdana; -fx-font-size: 16;" text="Search For:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <RadioButton fx:id="abilitySearch" mnemonicParsing="false" prefHeight="17.0" prefWidth="55.0" style="-fx-text-fill: #FFFFFF;" text="Ability" toggleGroup="$searchType" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="242.0" promptText="Enter Search" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+      <Button fx:id="searchButton" defaultButton="true" mnemonicParsing="false" onAction="#executeSearch" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label fx:id="errorMessage" prefHeight="17.0" prefWidth="602.0" text="" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+      <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</GridPane>

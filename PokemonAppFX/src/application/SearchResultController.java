@@ -1,17 +1,27 @@
 package application;
 
 import java.io.IOException ;
+import java.sql.Connection ;
+import java.sql.ResultSet ;
+import java.sql.SQLException ;
+import java.sql.Statement ;
 
+import database.DBQuery ;
 import javafx.event.ActionEvent ;
+import javafx.event.Event ;
 import javafx.fxml.FXML ;
 import javafx.fxml.FXMLLoader ;
 import javafx.scene.Parent ;
 import javafx.scene.Scene ;
+import javafx.scene.control.Button ;
 import javafx.scene.control.Label ;
 import javafx.scene.control.MenuItem ;
 import javafx.scene.control.TextArea ;
-import javafx.scene.layout.BorderPane ;
+import javafx.scene.image.Image ;
+import javafx.scene.image.ImageView ;
+import javafx.scene.layout.GridPane ;
 import javafx.scene.text.Text ;
+import javafx.stage.Modality ;
 import javafx.stage.Stage ;
 import types.Matchups ;
 
@@ -20,7 +30,7 @@ public class SearchResultController
 	private Stage stage ;
 	private Scene scene ;
 	private Parent root ;
-	@FXML private BorderPane mainWindow ;
+	@FXML private GridPane mainWindow ;
 	@FXML private MenuItem newSearchButton ;
 	
 	@FXML public Text normalEffect ;
@@ -49,11 +59,13 @@ public class SearchResultController
 	@FXML public Label SecondaryType ;
 	@FXML public Label secondaryAbilityLabel ;
 	@FXML public Label hiddenAbilityLabel ;
-	@FXML public Label primaryAbilityLabelText ;
-	@FXML public Label secondaryAbilityLabelText ;
-	@FXML public Label hiddenAbilityLabelText ;
+	@FXML public Button primaryAbilityButtonText ;
+	@FXML public Button secondaryAbilityButtonText ;
+	@FXML public Button hiddenAbilityButtonText ;
 	@FXML public TextArea evolutionMethod ;
 	@FXML public Text hasMega ;
+	
+	@FXML public ImageView pokemonSprite ;
 	
 	
 	public void setBugEffect(String effect)
@@ -161,6 +173,24 @@ public class SearchResultController
 		SecondaryType.setText(type) ;
 	}
 	
+	public void setSprite(int number)
+	{
+		String stringNum = "" ;
+		
+		if(number < 10)
+		{
+			stringNum += "00" + number ;
+		}else if (number <100) {
+			stringNum += "0" + number ;
+		}else {
+			stringNum += Integer.toString(number) ;
+		}
+		
+		String sprite = "file:resources/images/" + stringNum + ".png" ;
+		Image pokemon = new Image(sprite,400,400,true,true) ;
+		pokemonSprite.setImage(pokemon) ;
+	}
+	
 	public void setNationalDexNum(int number)
 	{
 		String stringNum = "#";
@@ -186,20 +216,60 @@ public class SearchResultController
 		hiddenAbilityLabel.setText(type) ;
 	}
 	
-	public void setAbility1LabelText(String type)
+	public void setAbility1ButtonText(String type)
 	{
-		primaryAbilityLabelText.setText(type) ;
+		primaryAbilityButtonText.setText(type) ;
 		
 	}
 	
-	public void setAbility2LabelText(String type)
+	public void setAbility2ButtonText(String type)
 	{
-		secondaryAbilityLabelText.setText(type) ;
+		secondaryAbilityButtonText.setText(type) ;
 	}
 	
-	public void setHiddenAbilityLabelText(String type)
+	public void hideAbility2Button() 
 	{
-		hiddenAbilityLabelText.setText(type) ;
+		secondaryAbilityButtonText.setVisible(false) ;
+	}
+	
+	public void setHiddenAbilityButtonText(String type)
+	{
+		hiddenAbilityButtonText.setText(type) ;
+	}
+	
+	public void hideAbilityHiddenButton() 
+	{
+		hiddenAbilityButtonText.setVisible(false) ;
+	}
+	
+	public void showAbilityInfo(Event e) throws IOException, SQLException
+	{					
+		String abilityText = null ;
+		Button b = (Button)e.getSource() ;
+		String bText = b.getText() ;
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("AbilityInfo.fxml")) ;
+		root = loader.load() ;		
+		
+		AbilityInfoController abilityInfoController = loader.getController() ;
+		abilityInfoController.setAbilityNameText(bText);
+		
+		Connection connection = DBQuery.connect() ;
+		String sql = "SELECT * FROM abilities where UPPER(abilityname) = UPPER('" + bText + "')" ;
+		Statement statement = connection.createStatement() ;
+		ResultSet result = statement.executeQuery(sql) ; 
+		
+		if(result.next())
+		{
+			abilityText = result.getString("description") ;
+		}
+		
+		abilityInfoController.setAbilityDescriptionText(abilityText) ;
+		
+		Stage stage = new Stage() ;
+		stage.setScene(new Scene(root)) ;  
+		stage.initModality(Modality.APPLICATION_MODAL) ;
+		stage.show() ;
 	}
 	
 	public void setEvolutionMethod(String type)

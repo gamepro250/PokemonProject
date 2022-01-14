@@ -5,297 +5,316 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 
-<BorderPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchResultController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
+<GridPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #22313f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchResultController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="161.0" />
+    <ColumnConstraints hgrow="NEVER" maxWidth="221.0" minWidth="10.0" prefWidth="182.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
                   <MenuItem fx:id="newSearchButton" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
-              <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
-   </top>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
+         <image>
+            <Image url="@../../resources/images/Fighting.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Fairy.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+         <image>
+            <Image url="@../../resources/images/Electric.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Dragon.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@../../resources/images/Dark.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Bug.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="bugEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="darkEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="dragonEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="electricEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="fairyEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="fightingEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Fire.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+         <image>
+            <Image url="@../../resources/images/Flying.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Ghost.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+         <image>
+            <Image url="@../../resources/images/Grass.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Ground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+         <image>
+            <Image url="@../../resources/images/Ice.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Normal.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+         <image>
+            <Image url="@../../resources/images/Poison.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Psychic.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+         <image>
+            <Image url="@../../resources/images/Rock.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <image>
+            <Image url="@../../resources/images/Steel.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+         <image>
+            <Image url="@../../resources/images/Water.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="fireEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="flyingEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="ghostEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="grassEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="groundEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="iceEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="normalEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="poisonEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="psychicEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="rockEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="steelEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="waterEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <VBox GridPane.columnIndex="6" GridPane.rowIndex="5">
          <children>
-            <Text fx:id="bugEffect" layoutX="795.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="darkEffect" layoutX="795.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="dragonEffect" layoutX="795.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="electricEffect" layoutX="795.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="fairyEffect" layoutX="795.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="fireEffect" layoutX="795.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="ghostEffect" layoutX="975.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="grassEffect" layoutX="975.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="fightingEffect" layoutX="975.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="iceEffect" layoutX="975.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="groundEffect" layoutX="975.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="flyingEffect" layoutX="975.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="waterEffect" layoutX="1155.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="normalEffect" layoutX="1155.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="psychicEffect" layoutX="1155.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="rockEffect" layoutX="1155.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="steelEffect" layoutX="1155.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="poisonEffect" layoutX="1155.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Label layoutX="715.0" layoutY="492.0" text="Bug">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="715.0" layoutY="522.0" text="Dark">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="715.0" layoutY="552.0" text="Dragon">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="715.0" layoutY="582.0" text="Electric">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="715.0" layoutY="612.0" text="Fairy">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="715.0" layoutY="642.0" text="Fire">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="582.0" text="Ghost">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="522.0" text="Flying">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="552.0" text="Grass">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="492.0" text="Fighting">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="642.0" text="Ice">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="895.0" layoutY="612.0" text="Ground">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="552.0" text="Poison">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="492.0" text="Normal">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="642.0" text="Steel">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="522.0" text="Water">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="612.0" text="Rock">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="1075.0" layoutY="582.0" text="Psychic">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="pokeName" layoutX="44.0" layoutY="44.0" prefHeight="30.0" prefWidth="158.0" text="Pokename">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="pokeType" layoutX="44.0" layoutY="194.0" prefHeight="30.0" prefWidth="53.0" text="Type:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="primaryType" layoutX="113.0" layoutY="194.0" prefHeight="30.0" prefWidth="80.0" text="Type 1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="SecondaryType" layoutX="208.0" layoutY="194.0" prefHeight="30.0" prefWidth="79.0" text="Type 2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="ability1Label" layoutX="610.0" layoutY="50.0" text="Ability">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="secondaryAbilityLabel" layoutX="610.0" layoutY="100.0" text="Ability 2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="hiddenAbilityLabel" layoutX="611.0" layoutY="150.0" text="Hidden Ability">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="hiddenAbilityLabelText" layoutX="800.0" layoutY="150.0" text="Label">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="primaryAbilityLabelText" layoutX="800.0" layoutY="50.0" text="Label">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="secondaryAbilityLabelText" layoutX="800.0" layoutY="100.0" text="Label">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defensive Effectiveness" wrappingWidth="178.13671875">
+            <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Defensive Effectiveness" wrappingWidth="178.13671875">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
-            <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x1 = Effective" wrappingWidth="110.13671875" />
-            <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
-            <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0 = No Effect" wrappingWidth="110.13671875" />
-            <Label layoutX="44.0" layoutY="351.0" text="Evolution">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="evolutionMethod" editable="false" layoutX="61.0" layoutY="394.0" prefHeight="302.0" prefWidth="326.0" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font></TextArea>
-            <Label layoutX="412.0" layoutY="394.0" text="Has Mega">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Text fx:id="hasMega" layoutX="428.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mega" wrappingWidth="48.22265625">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text fx:id="nationDexNum" layoutX="204.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" wrappingWidth="86.89453125">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
-   </center>
-</BorderPane>
+            <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
+            <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x1 = Effective" wrappingWidth="110.13671875" />
+            <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x0 = No Effect" wrappingWidth="110.13671875" />
+            <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
+         </children>
+      </VBox>
+      <Label style="-fx-text-fill: #8dc6ff;" text="Has Mega" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text fx:id="hasMega" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Mega" wrappingWidth="48.22265625" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="evolutionMethod" editable="false" prefHeight="002.0" prefWidth="326.0" style="-fx-background-color: #22313f; -fx-border-color: #22313f;" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextArea>
+      <Label style="-fx-text-fill: #8dc6ff;" text="Evolution" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="pokeName" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: #8dc6ff;" text="Pokename" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Text fx:id="nationDexNum" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Number" wrappingWidth="86.89453125" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="pokeType" prefHeight="30.0" prefWidth="53.0" style="-fx-text-fill: #8dc6ff;" text="Type:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="primaryType" prefHeight="30.0" prefWidth="80.0" style="-fx-text-fill: #8dc6ff;" text="Type 1" translateX="-15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="SecondaryType" prefHeight="30.0" prefWidth="79.0" style="-fx-text-fill: #8dc6ff;" text="Type 2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pokemonSprite" fitHeight="174.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+         <image>
+            <Image url="@../../resources/images/Pokeball.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="ability1Label" style="-fx-text-fill: #8dc6ff;" text="Ability" GridPane.columnIndex="8" GridPane.rowIndex="1">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="secondaryAbilityLabel" style="-fx-text-fill: #8dc6ff;" text="Ability 2" GridPane.columnIndex="8" GridPane.rowIndex="2">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="hiddenAbilityLabel" style="-fx-text-fill: #8dc6ff;" text="Hidden Ability" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="primaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+      <Button fx:id="secondaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+      <Button fx:id="hiddenAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+   </children>
+</GridPane>
