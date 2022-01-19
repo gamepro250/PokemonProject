@@ -1,0 +1,23 @@
+.background{
+	-fx-background-color: #22313F ;
+}
+.search-type{
+	-fx-fill: #8DC6FF ;
+	-fx-font-family: Verdana ;
+	-fx-font-size: 16 ;
+}
+.search-radio, .bottom-label{
+	-fx-text-fill: #FFFFFF ;
+}
+.search-bar{
+	-fx-border-color:  #000000 ;
+}
+.search-button{
+	-fx-background-color: #8DC6FF ;
+	fx-background-radius: 7 ;
+}
+.type-effectiveness{
+	-fx-fill: #8DC6FF ;
+	-fx-font-family: Verdana ;
+	-fx-font-size: 16 ;
+}

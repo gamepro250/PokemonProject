@@ -1,41 +1,84 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL ;
 import java.sql.Connection ;
 import java.sql.ResultSet ;
 import java.sql.SQLException ;
 import java.sql.Statement ;
+import java.util.ResourceBundle ;
+
 
 import database.DBQuery ;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML ;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable ;
 import javafx.geometry.Rectangle2D ;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox ;
 import javafx.scene.control.Label ;
 import javafx.scene.control.RadioButton ;
+import javafx.scene.control.TabPane ;
 import javafx.scene.control.TextField ;
-import javafx.scene.layout.GridPane ;
+import javafx.scene.text.Text ;
 import javafx.stage.Modality ;
 import javafx.stage.Screen ;
 import javafx.stage.Stage;
+import types.Matchups ;
 
-public class MainSearchController 
+public class MainSearchController  implements Initializable
 {
 	private Stage stage ;
 	private Scene scene ;
 	private Parent root ;
 	//@FXML MenuItem closeMenu ;
-	@FXML GridPane mainWindow ;
+	@FXML TabPane mainWindow ;
 	@FXML TextField searchField ;
 	@FXML Label errorMessage ;
 	@FXML RadioButton nameSearch ;
 	@FXML RadioButton numberSearch ;
 	@FXML RadioButton abilitySearch ;
+	@FXML ComboBox<String> type1 ;
+	@FXML ComboBox<String> type2 ;
+	
+	@FXML public Text normalEffect ;
+	@FXML public Text fireEffect ;
+	@FXML public Text waterEffect ;
+	@FXML public Text grassEffect ;
+	@FXML public Text electricEffect ;
+	@FXML public Text iceEffect ;
+	@FXML public Text fightingEffect ;
+	@FXML public Text poisonEffect ;
+	@FXML public Text groundEffect ;
+	@FXML public Text flyingEffect ;
+	@FXML public Text psychicEffect ;
+	@FXML public Text bugEffect ;
+	@FXML public Text rockEffect ;
+	@FXML public Text ghostEffect ;
+	@FXML public Text darkEffect ;
+	@FXML public Text dragonEffect ;
+	@FXML public Text steelEffect ;
+	@FXML public Text fairyEffect ;
+	
 	private Boolean pokeFound ;
 	String sql ;
+	
+	public void initialize(URL url, ResourceBundle resourceBundle)
+	{
+		String typeArray[] = {"Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", 
+				"Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"} ;                    
+		
+		type2.getItems().add("None") ;
+		
+		for(String type:typeArray)
+		{
+			type1.getItems().add(type) ;
+			type2.getItems().add(type) ;
+		}
+	}
 	
 	public void executeSearch(ActionEvent event) throws IOException, SQLException
 	{
@@ -47,7 +90,7 @@ public class MainSearchController
 			String abilityName = searchField.getText() ;
 			
 			connection = DBQuery.connect() ;
-			String sql = "SELECT * FROM abilities where UPPER(abilityname) = UPPER('" + abilityName + "')" ;
+			sql = "SELECT * FROM abilities where UPPER(abilityname) = UPPER('" + abilityName + "')" ;
 			Statement statement = connection.createStatement() ;
 			ResultSet result = statement.executeQuery(sql) ; 
 			
@@ -157,6 +200,22 @@ public class MainSearchController
 					searchResultController.setHasMega("No") ;
 				}
 				
+				if(result.getString("alola").equals("Y")) 
+				{
+					setAlolanData(searchResultController, connection, name, nationalDexNum) ;
+				}
+				else {
+					searchResultController.disableAlola() ;
+				}
+				
+				if(result.getString("galar").equals("Y")) 
+				{
+					setGalarianData(searchResultController, connection, name, nationalDexNum) ;
+				}
+				else {
+					searchResultController.disableGalar() ;
+				}
+				
 				pokeFound = true ;
 			}
 	
@@ -171,11 +230,13 @@ public class MainSearchController
 				stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
 				scene = new Scene(root) ;
 				stage.setScene(scene) ;
-				stage.show() ;
-				
 		        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+				stage.setHeight(primScreenBounds.getHeight() - 200) ;
+				stage.setWidth(primScreenBounds.getWidth() - 550) ;
 		        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
 		        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+				stage.show() ;
+				
 				
 				
 				DBQuery.disconnect(connection) ;
@@ -288,11 +349,222 @@ public class MainSearchController
 				searchResultController.setHasMega("No") ;
 			}
 			
+			if(result.getString("alola").equals("Y")) 
+			{
+				setAlolanData(searchResultController, connection, name, nationalDexNum) ;
+			}
+			else {
+				searchResultController.disableAlola() ;
+			}
+			
+			if(result.getString("galar").equals("Y")) 
+			{
+				setGalarianData(searchResultController, connection, name, nationalDexNum) ;
+			}
+			else {
+				searchResultController.disableGalar() ;
+			}			
 			pokeFound = true ;
 
 		}
 	}
 	
+	public void setAlolanData(SearchResultController searchResultController, Connection connect, String name, int number) throws SQLException
+	{
+		String sqlA = "select * from ALOLAFORMS where UPPER(name) = UPPER('" + name +"')" ;
+		Statement statementA = connect.createStatement() ;
+		ResultSet resultA = statementA.executeQuery(sqlA) ;
+
+		resultA.next() ;
+		searchResultController.setEvolutionMethodA(resultA.getString("evolutionMethod")) ;
+		searchResultController.setSpriteA(number) ;
+		searchResultController.setAlolanDexNum(resultA.getInt("alolandex")) ;
+		searchResultController.setPrimaryTypeA(resultA.getString("type1")) ;
+		searchResultController.setSecondaryTypeA(resultA.getString("type2")) ;
+		searchResultController.setEffectivenessA(resultA.getString("type1"), resultA.getString("type2")) ; 
+		
+		String ability1Text = resultA.getString("ability1") ;
+		searchResultController.setAbility1ButtonTextA(ability1Text) ;
+		
+		String ability2Text = resultA.getString("ability2") ;
+		if(ability2Text == null)
+		{
+			searchResultController.setAbility2LabelA("") ;
+			searchResultController.hideAbility2ButtonA() ;
+		}
+		searchResultController.setAbility2ButtonTextA(ability2Text) ;
+		
+		String hiddenAbilityText = resultA.getString("abilityhidden") ;
+		if(hiddenAbilityText == null)
+		{
+			searchResultController.setHiddenAbilityLabelA("") ;
+			searchResultController.hideAbilityHiddenButtonA() ;
+		}
+		searchResultController.setHiddenAbilityButtonTextA(hiddenAbilityText) ;		
+	}
 	
+	public void setGalarianData(SearchResultController searchResultController, Connection connect, String name, int number) throws SQLException
+	{
+		String sqlG = "select * from GALARFORMS where name = '" + name +"'" ;
+		Statement statementG = connect.createStatement() ;
+		ResultSet resultG = statementG.executeQuery(sqlG) ;
+		
+		resultG.next() ;
+		searchResultController.setEvolutionMethodG(resultG.getString("evolutionMethod")) ;
+		searchResultController.setSpriteG(number) ;
+		searchResultController.setGalarDexNum(resultG.getInt("galardex")) ;
+		searchResultController.setPrimaryTypeG(resultG.getString("type1")) ;
+		searchResultController.setSecondaryTypeG(resultG.getString("type2")) ;
+		searchResultController.setEffectivenessG(resultG.getString("type1"), resultG.getString("type2")) ; 
+		
+		String ability1Text = resultG.getString("ability1") ;
+		searchResultController.setAbility1ButtonTextG(ability1Text) ;
+		
+		String ability2Text = resultG.getString("ability2") ;
+		if(ability2Text == null)
+		{
+			searchResultController.setAbility2LabelG("") ;
+			searchResultController.hideAbility2ButtonG() ;
+		}
+		searchResultController.setAbility2ButtonTextG(ability2Text) ;
+		
+		String hiddenAbilityText = resultG.getString("abilityhidden") ;
+		if(hiddenAbilityText == null)
+		{
+			searchResultController.setHiddenAbilityLabelG("") ;
+			searchResultController.hideAbilityHiddenButtonG() ;
+		}
+		searchResultController.setHiddenAbilityButtonTextG(hiddenAbilityText) ;	
+	}
 	
+	public void setBugEffect(String effect)
+	{
+		bugEffect.setText(effect) ;
+	}	
+	
+	public void setDarkEffect(String effect)
+	{
+		darkEffect.setText(effect) ;
+	}	
+	
+	public void setDragonEffect(String effect)
+	{
+		dragonEffect.setText(effect) ;
+	}	
+	
+	public void setElectricEffect(String effect)
+	{
+		electricEffect.setText(effect) ;
+	}	
+	
+	public void setFairyEffect(String effect)
+	{
+		fairyEffect.setText(effect) ;
+	}	
+	
+	public void setGhostEffect(String effect)
+	{
+		ghostEffect.setText(effect) ;
+	}	
+	
+	public void setFlyingEffect(String effect)
+	{
+		flyingEffect.setText(effect) ;
+	}	
+	
+	public void setGrassEffect(String effect)
+	{
+		grassEffect.setText(effect) ;
+	}	
+	
+	public void setFireEffect(String effect)
+	{
+		fireEffect.setText(effect) ;
+	}	
+	
+	public void setFightingEffect(String effect)
+	{
+		fightingEffect.setText(effect) ;
+	}	
+	
+	public void setIceEffect(String effect)
+	{
+		iceEffect.setText(effect) ;
+	}	
+	
+	public void setGroundEffect(String effect)
+	{
+		groundEffect.setText(effect) ;
+	}	
+	
+	public void setPoisonEffect(String effect)
+	{
+		poisonEffect.setText(effect) ;
+	}	
+	
+	public void setNormalEffect(String effect)
+	{
+		normalEffect.setText(effect) ;
+	}	
+	
+	public void setSteelEffect(String effect)
+	{
+		steelEffect.setText(effect) ;
+	}	
+	
+	public void setWaterEffect(String effect)
+	{
+		waterEffect.setText(effect) ;
+	}	
+	
+	public void setRockEffect(String effect)
+	{
+		rockEffect.setText(effect) ;
+	}	
+	
+	public void setPsychicEffect(String effect)
+	{
+		psychicEffect.setText(effect) ;
+	}
+
+	public void setEffectiveness()
+	{
+		//order of types: normal, fire, water, grass, electric
+		//ice, fighting, poison, ground, flying, psychic, bug, 
+		//rock, ghost, dark, dragon, steel, fairy
+		
+		//String typeFirst = type1.getValue() ;
+		
+		//if(type2.getValu
+		//String typeSecond = type2.getValue() ;
+		
+		double[] typeChart ;
+		
+		if(type2.getValue() == null)
+		{
+			typeChart = Matchups.effectiveness(type1.getValue()) ;
+		}
+		else {
+			typeChart = Matchups.effectiveness(type1.getValue(), type2.getValue()) ;
+		}
+		
+		this.setNormalEffect(Matchups.getMultiplyer(typeChart[0])) ;
+		this.setFireEffect(Matchups.getMultiplyer(typeChart[1])) ;
+		this.setWaterEffect(Matchups.getMultiplyer(typeChart[2])) ;
+		this.setGrassEffect(Matchups.getMultiplyer(typeChart[3])) ;
+		this.setElectricEffect(Matchups.getMultiplyer(typeChart[4])) ;
+		this.setIceEffect(Matchups.getMultiplyer(typeChart[5])) ;
+		this.setFightingEffect(Matchups.getMultiplyer(typeChart[6])) ;
+		this.setPoisonEffect(Matchups.getMultiplyer(typeChart[7])) ;
+		this.setGroundEffect(Matchups.getMultiplyer(typeChart[8])) ;
+		this.setFlyingEffect(Matchups.getMultiplyer(typeChart[9])) ;
+		this.setPsychicEffect(Matchups.getMultiplyer(typeChart[10])) ;
+		this.setBugEffect(Matchups.getMultiplyer(typeChart[11])) ;
+		this.setRockEffect(Matchups.getMultiplyer(typeChart[12])) ;
+		this.setGhostEffect(Matchups.getMultiplyer(typeChart[13])) ;
+		this.setDarkEffect(Matchups.getMultiplyer(typeChart[14])) ;
+		this.setDragonEffect(Matchups.getMultiplyer(typeChart[15])) ;
+		this.setSteelEffect(Matchups.getMultiplyer(typeChart[16])) ;
+		this.setFairyEffect(Matchups.getMultiplyer(typeChart[17])) ;
+	}
 }

@@ -1,59 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 
-<GridPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="638.0" style="-fx-background-color: #22313F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSearchController">
-  <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8DC6FF; -fx-font-family: Verdana; -fx-font-size: 16;" text="Search By:" translateX="-10.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-      <RadioButton fx:id="nameSearch" mnemonicParsing="false" selected="true" style="-fx-text-fill: #FFFFFF;" text="Name" translateX="-12.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-         <toggleGroup>
-            <ToggleGroup fx:id="searchType" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="numberSearch" mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" text="Number" toggleGroup="$searchType" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8DC6FF; -fx-font-family: Verdana; -fx-font-size: 16;" text="Search For:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-      <RadioButton fx:id="abilitySearch" mnemonicParsing="false" prefHeight="17.0" prefWidth="55.0" style="-fx-text-fill: #FFFFFF;" text="Ability" toggleGroup="$searchType" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="242.0" promptText="Enter Search" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-      <Button fx:id="searchButton" defaultButton="true" mnemonicParsing="false" onAction="#executeSearch" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-      <Label fx:id="errorMessage" prefHeight="17.0" prefWidth="602.0" text="" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-      <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeProgram" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-   </children>
-</GridPane>
+<TabPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@PokemonSearch.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSearchController">
+  <tabs>
+    <Tab text="Search">
+         <content>
+            <GridPane styleClass="background" stylesheets="@PokemonSearch.css">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Search By:" translateX="1.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                  <Label fx:id="errorMessage" prefHeight="17.0" prefWidth="641.0" styleClass="bottom-label" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                  <Button fx:id="searchButton" defaultButton="true" mnemonicParsing="false" onAction="#executeSearch" style=": 7;" styleClass="search-button" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                  <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="242.0" promptText="Enter Search" styleClass="search-bar" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                  <RadioButton fx:id="abilitySearch" mnemonicParsing="false" prefHeight="20.0" prefWidth="114.0" styleClass="search-radio" text="Ability" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="searchType" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Search For:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                  <RadioButton fx:id="numberSearch" mnemonicParsing="false" styleClass="search-radio" text="Number" toggleGroup="$searchType" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                  <RadioButton fx:id="nameSearch" mnemonicParsing="false" selected="true" styleClass="search-radio" text="Name" toggleGroup="$searchType" translateX="-12.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Delete" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </GridPane>
+         </content>
+    </Tab>
+    <Tab text="Type Effectiveness">
+         <content>
+            <GridPane styleClass="background">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ComboBox fx:id="type1" onAction="#setEffectiveness" prefWidth="150.0" promptText="Type One" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <ComboBox fx:id="type2" layoutX="250.0" layoutY="110.0" onAction="#setEffectiveness" prefWidth="150.0" promptText="Type Two" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <ImageView scaleX="0.75" scaleY="0.75">
+                     <image>
+                        <Image url="@../../resources/images/Bug.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/Dark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/Dragon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../resources/images/Electric.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/Fairy.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-25.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                     <image>
+                        <Image url="@../../resources/images/Fighting.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-25.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/Fire.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-25.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../resources/images/Flying.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-25.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/Ghost.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                     <image>
+                        <Image url="@../../resources/images/Grass.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/Ground.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../resources/images/Ice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/Normal.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-45.0" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/Poison.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-45.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/Psychic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-45.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/Rock.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-45.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../resources/images/Steel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView scaleX="0.75" scaleY="0.75" translateX="-45.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/Water.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="waterEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="-55.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="steelEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="-55.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="rockEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="-55.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="psychicEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="-55.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="poisonEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="-55.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="normalEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="45.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="iceEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="45.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="groundEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="45.0" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="grassEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="45.0" GridPane.columnIndex="3" GridPane.halignment="LEFT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ghostEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="5.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="flyingEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fireEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fightingEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" translateX="5.0" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fairyEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="electricEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dragonEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="darkEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bugEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-effectiveness" text="None" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+         </content>
+    </Tab>
+  </tabs>
+</TabPane>

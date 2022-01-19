@@ -1,320 +1,941 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #22313f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchResultController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="161.0" />
-    <ColumnConstraints hgrow="NEVER" maxWidth="221.0" minWidth="10.0" prefWidth="182.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="newSearchButton" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
-         <image>
-            <Image url="@../../resources/images/Fighting.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Fairy.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
-         <image>
-            <Image url="@../../resources/images/Electric.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Dragon.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../../resources/images/Dark.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Bug.jpg" />
-         </image>
-      </ImageView>
-      <Text fx:id="bugEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="darkEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="dragonEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="electricEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="fairyEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="fightingEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Fire.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6">
-         <image>
-            <Image url="@../../resources/images/Flying.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Ghost.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7">
-         <image>
-            <Image url="@../../resources/images/Grass.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Ground.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8">
-         <image>
-            <Image url="@../../resources/images/Ice.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Normal.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-         <image>
-            <Image url="@../../resources/images/Poison.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Psychic.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-         <image>
-            <Image url="@../../resources/images/Rock.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <image>
-            <Image url="@../../resources/images/Steel.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-         <image>
-            <Image url="@../../resources/images/Water.jpg" />
-         </image>
-      </ImageView>
-      <Text fx:id="fireEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="flyingEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="ghostEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="grassEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="groundEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="iceEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="normalEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="poisonEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="psychicEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="rockEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="steelEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="waterEffect" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <VBox GridPane.columnIndex="6" GridPane.rowIndex="5">
-         <children>
-            <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Defensive Effectiveness" wrappingWidth="178.13671875">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
-            <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x1 = Effective" wrappingWidth="110.13671875" />
-            <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x0 = No Effect" wrappingWidth="110.13671875" />
-            <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
-         </children>
-      </VBox>
-      <Label style="-fx-text-fill: #8dc6ff;" text="Has Mega" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Text fx:id="hasMega" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Mega" wrappingWidth="48.22265625" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <TextArea fx:id="evolutionMethod" editable="false" prefHeight="002.0" prefWidth="326.0" style="-fx-background-color: #22313f; -fx-border-color: #22313f;" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="3">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextArea>
-      <Label style="-fx-text-fill: #8dc6ff;" text="Evolution" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="pokeName" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: #8dc6ff;" text="Pokename" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Text fx:id="nationDexNum" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8dc6ff;" text="Number" wrappingWidth="86.89453125" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Label fx:id="pokeType" prefHeight="30.0" prefWidth="53.0" style="-fx-text-fill: #8dc6ff;" text="Type:" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="primaryType" prefHeight="30.0" prefWidth="80.0" style="-fx-text-fill: #8dc6ff;" text="Type 1" translateX="-15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="SecondaryType" prefHeight="30.0" prefWidth="79.0" style="-fx-text-fill: #8dc6ff;" text="Type 2" GridPane.columnIndex="2" GridPane.rowIndex="3">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="pokemonSprite" fitHeight="174.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
-         <image>
-            <Image url="@../../resources/images/Pokeball.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="ability1Label" style="-fx-text-fill: #8dc6ff;" text="Ability" GridPane.columnIndex="8" GridPane.rowIndex="1">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="secondaryAbilityLabel" style="-fx-text-fill: #8dc6ff;" text="Ability 2" GridPane.columnIndex="8" GridPane.rowIndex="2">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="hiddenAbilityLabel" style="-fx-text-fill: #8dc6ff;" text="Hidden Ability" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button fx:id="primaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-      <Button fx:id="secondaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-      <Button fx:id="hiddenAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" style="-fx-background-color: #8DC6FF; -fx-background-radius: 7;" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-   </children>
-</GridPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@PokemonResults.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchResultController">
+  <tabs>
+    <Tab text="National">
+         <content>
+            <GridPane fx:id="mainWindow" prefHeight="327.0" prefWidth="539.0" styleClass="mainWindow">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="148.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="132.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                           <items>
+                              <MenuItem fx:id="newSearchButton" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Delete" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Fighting.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fairy.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Electric.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Dragon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../resources/images/Dark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Bug.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="fightingEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fairyEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="electricEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dragonEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="darkEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bugEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <VBox GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <children>
+                        <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Defensive Effectiveness" wrappingWidth="178.13671875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
+                        <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x1 = Effective" wrappingWidth="110.13671875" />
+                        <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0 = No Effect" wrappingWidth="110.13671875" />
+                        <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Water.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Steel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Rock.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Psychic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Poison.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Normal.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Ice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ground.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Grass.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ghost.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Flying.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fire.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="waterEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="steelEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="rockEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="psychicEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="poisonEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="normalEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="iceEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="groundEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="grassEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ghostEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="flyingEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fireEffect" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="newSearchButton2" mnemonicParsing="false" onAction="#newSearch2" prefHeight="25.0" prefWidth="106.0" styleClass="search-button" text="New Search" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                  <Text fx:id="hasMega" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Mega" wrappingWidth="48.22265625" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Label styleClass="regular-text" text="Has Mega" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="regular-text" text="Evolution" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="evolutionMethod" editable="false" prefHeight="002.0" prefWidth="326.0" styleClass="matching-box" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Text fx:id="nationDexNum" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Number" wrappingWidth="86.89453125" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="pokeName" prefHeight="30.0" prefWidth="158.0" styleClass="regular-text" text="Pokename" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="SecondaryType" prefHeight="30.0" prefWidth="79.0" styleClass="regular-text" text="Type 2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="primaryType" prefHeight="30.0" prefWidth="80.0" styleClass="regular-text" text="Type 1" translateX="-15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pokeType" prefHeight="30.0" prefWidth="53.0" styleClass="regular-text" text="Type:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="pokemonSprite" fitHeight="174.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/Pokeball.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="hiddenAbilityLabel" styleClass="regular-text" text="Hidden Ability" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondaryAbilityLabel" styleClass="regular-text" text="Ability 2" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ability1Label" styleClass="regular-text" text="Ability" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="primaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                  <Button fx:id="secondaryAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                  <Button fx:id="hiddenAbilityButtonText" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </content>
+    </Tab>
+      <Tab fx:id="alolanTab" text="Alola">
+         <content>
+            <GridPane fx:id="alolaWindow" prefHeight="327.0" prefWidth="539.0" styleClass="mainWindow">
+               <children>
+                  <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                           <items>
+                              <MenuItem fx:id="newSearchButton1" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Delete" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Fighting.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fairy.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Electric.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Dragon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../resources/images/Dark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Bug.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="fightingEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fairyEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="electricEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dragonEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="darkEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bugEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <VBox GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <children>
+                        <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Defensive Effectiveness" wrappingWidth="178.13671875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
+                        <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x1 = Effective" wrappingWidth="110.13671875" />
+                        <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0 = No Effect" wrappingWidth="110.13671875" />
+                        <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Water.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Steel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Rock.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Psychic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Poison.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Normal.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Ice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ground.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Grass.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ghost.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Flying.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fire.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="waterEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="steelEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="rockEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="psychicEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="poisonEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="normalEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="iceEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="groundEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="grassEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ghostEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="flyingEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fireEffectA" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="newSearchButton2A" mnemonicParsing="false" onAction="#newSearch2" prefHeight="25.0" prefWidth="106.0" styleClass="search-button" text="New Search" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                  <Label styleClass="regular-text" text="Evolution" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="evolutionMethodA" editable="false" prefHeight="002.0" prefWidth="326.0" styleClass="matching-box" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Text fx:id="alolaDexNum" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Number" wrappingWidth="86.89453125" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="pokeNameA" prefHeight="30.0" prefWidth="158.0" styleClass="regular-text" text="Pokename" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="SecondaryTypeA" prefHeight="30.0" prefWidth="79.0" styleClass="regular-text" text="Type 2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="primaryTypeA" prefHeight="30.0" prefWidth="80.0" styleClass="regular-text" text="Type 1" translateX="-15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pokeTypeA" prefHeight="30.0" prefWidth="53.0" styleClass="regular-text" text="Type:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="pokemonSpriteA" fitHeight="174.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/Pokeball.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="hiddenAbilityLabelA" styleClass="regular-text" text="Hidden Ability" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondaryAbilityLabelA" styleClass="regular-text" text="Ability 2" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ability1LabelA" styleClass="regular-text" text="Ability" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="primaryAbilityButtonTextA" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                  <Button fx:id="secondaryAbilityButtonTextA" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                  <Button fx:id="hiddenAbilityButtonTextA" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="132.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab fx:id="galarianTab" text="Galar">
+         <content>
+            <GridPane fx:id="galarWindow" prefHeight="327.0" prefWidth="539.0" styleClass="mainWindow">
+               <children>
+                  <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                           <items>
+                              <MenuItem fx:id="newSearchButton11" mnemonicParsing="false" onAction="#newSearch" text="New Search" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Delete" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Fighting.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fairy.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Electric.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="10.0" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Dragon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="20.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../../resources/images/Dark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="15.0" GridPane.columnIndex="6" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Bug.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="fightingEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fairyEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="electricEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dragonEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="10.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="darkEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="20.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bugEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-10.0" translateY="15.0" GridPane.columnIndex="7" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <VBox GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <children>
+                        <Text layoutX="626.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Defensive Effectiveness" wrappingWidth="178.13671875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="620.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x4 or x2 = Super Effective" wrappingWidth="149.13671875" />
+                        <Text layoutX="815.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x1 = Effective" wrappingWidth="110.13671875" />
+                        <Text layoutX="815.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0 = No Effect" wrappingWidth="110.13671875" />
+                        <Text layoutX="620.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="x0.5 or x.025 = Not Very Effective" wrappingWidth="214.13671875" />
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Water.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Steel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Rock.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="10.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Psychic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="20.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Poison.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateY="15.0" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Normal.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../resources/images/Ice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ground.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../resources/images/Grass.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Ghost.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../resources/images/Flying.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <image>
+                        <Image url="@../../resources/images/Fire.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="waterEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="steelEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="rockEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="psychicEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="10.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="poisonEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="20.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="normalEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateX="-30.0" translateY="15.0" GridPane.columnIndex="10" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="iceEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="groundEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="grassEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ghostEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="10.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="flyingEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="20.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="fireEffectG" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Text" translateY="15.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="newSearchButton2G" mnemonicParsing="false" onAction="#newSearch2" prefHeight="25.0" prefWidth="106.0" styleClass="search-button" text="New Search" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                  <Label styleClass="regular-text" text="Evolution" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="evolutionMethodG" editable="false" prefHeight="002.0" prefWidth="326.0" styleClass="matching-box" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Text fx:id="galarDexNum" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="regular-text" text="Number" wrappingWidth="86.89453125" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="pokeNameG" prefHeight="30.0" prefWidth="158.0" styleClass="regular-text" text="Pokename" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="SecondaryTypeG" prefHeight="30.0" prefWidth="79.0" styleClass="regular-text" text="Type 2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="primaryTypeG" prefHeight="30.0" prefWidth="80.0" styleClass="regular-text" text="Type 1" translateX="-15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pokeTypeG" prefHeight="30.0" prefWidth="53.0" styleClass="regular-text" text="Type:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="pokemonSpriteG" fitHeight="174.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/Pokeball.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="hiddenAbilityLabelG" styleClass="regular-text" text="Hidden Ability" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondaryAbilityLabelG" styleClass="regular-text" text="Ability 2" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ability1LabelG" styleClass="regular-text" text="Ability" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="primaryAbilityButtonTextG" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                  <Button fx:id="secondaryAbilityButtonTextG" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                  <Button fx:id="hiddenAbilityButtonTextG" mnemonicParsing="false" onAction="#showAbilityInfo" styleClass="search-button" text="Button" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="132.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

@@ -1,0 +1,17 @@
+.mainWindow{
+	-fx-background-color: #22313f ;
+}
+.regular-text{
+	-fx-text-fill: #8dc6ff ;
+	-fx-fill: #8dc6ff ;
+}
+.matching-box{
+	-fx-control-inner-background: #22313f;
+	-fx-text-box-border:  #22313f;
+	-fx-faint-focus-color:  #22313f;
+	-fx-background-color:  #22313f;
+}
+.search-button{
+	-fx-background-color: #8DC6FF ;
+	fx-background-radius: 7 ;
+}
