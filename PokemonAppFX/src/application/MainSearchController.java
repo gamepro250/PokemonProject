@@ -41,8 +41,13 @@ public class MainSearchController  implements Initializable
 	@FXML RadioButton nameSearch ;
 	@FXML RadioButton numberSearch ;
 	@FXML RadioButton abilitySearch ;
+	@FXML RadioButton natureRadio ;
+	@FXML RadioButton statsRadio ;
 	@FXML ComboBox<String> type1 ;
 	@FXML ComboBox<String> type2 ;
+	@FXML ComboBox<String> natureDropdown ;
+	@FXML ComboBox<String> increasedStatDropdown ;
+	@FXML ComboBox<String> decreasedStatDropdown ;
 	
 	@FXML public Text normalEffect ;
 	@FXML public Text fireEffect ;
@@ -68,23 +73,54 @@ public class MainSearchController  implements Initializable
 	
 	public void initialize(URL url, ResourceBundle resourceBundle)
 	{
+		//Types to add to the type effectiveness dropdown
 		String typeArray[] = {"Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", 
-				"Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"} ;                    
+				"Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"} ;   
 		
+		//Natures to add to the nature dropdown
+		String natureArray[] = {"Adamant", "Bashful", "Bold", "Brave", "Calm", "Careful", "Docile", "Gentle", 
+				"Hardy", "Hasty", "Impish", "Jolly", "Lax", "Lonely", "Mild", "Modest", "Naive", "Naughty",
+				"Quiet", "Quirky", "Rash", "Relaxed", "Sassy", "Serious", "Timid", "None"} ;
+		
+		//Stats to add for the nature window
+		String statArray[] = {"Attack", "Defense", "Special Attack", "Special Defense", "Speed", "None"} ;
+		
+		//Add none as a possibility for the second typing
 		type2.getItems().add("None") ;
 		
+		//Add all types to the type1 and type2 dropdowns
 		for(String type:typeArray)
 		{
 			type1.getItems().add(type) ;
 			type2.getItems().add(type) ;
 		}
+		
+		//Add all natures to the nature dropdown
+		for(String nature:natureArray)
+		{
+			natureDropdown.getItems().add(nature) ;
+		}
+		//Add all stats to the nature stats dropdown
+		for(String stat:statArray)
+		{
+			increasedStatDropdown.getItems().add(stat) ;
+			decreasedStatDropdown.getItems().add(stat) ;
+		}
+		//Sets default Values for dropdown menus
+		natureDropdown.setValue("Adamant") ;
+		increasedStatDropdown.setValue("Attack") ;
+		decreasedStatDropdown.setValue("Special Attack") ;
+		
+		
+		
 	}
 	
+	//When the search button is clicked, the search is executed using what is entered in the text box as either a name search or ability search
 	public void executeSearch(ActionEvent event) throws IOException, SQLException
 	{
-		Connection connection = DBQuery.connect() ;
+		Connection connection = DBQuery.connect() ; //Connect to the database
 				
-		if(abilitySearch.isSelected())
+		if(abilitySearch.isSelected()) //If ability is selected, the search displays the effect text of the searched ability
 		{
 			String abilityText = null ;
 			String abilityName = searchField.getText() ;
@@ -118,17 +154,17 @@ public class MainSearchController  implements Initializable
 			}
 			
 		}
-		else {
+		else { //If a Pokemon search is selected, the search returns the data relevant to the searched Pokemon on the Search Result screen
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchResult.fxml")) ;
 			root = loader.load() ;		
 			SearchResultController searchResultController = loader.getController() ;
 			
-			if(nameSearch.isSelected())
+			if(nameSearch.isSelected()) //Searches by Pokemon name
 			{
 				sql = "SELECT * FROM nationaldex where UPPER(name) = UPPER('" + searchField.getText() + "')" ; //Create SELECT statement
 			}
-			else if (numberSearch.isSelected()) 
+			else if (numberSearch.isSelected()) //searches by Pokemon number
 			{
 				
 				try
@@ -150,12 +186,35 @@ public class MainSearchController  implements Initializable
 				errorMessage.setText("No results found.") ;
 				pokeFound = false ;
 			}
-			else
+			else //Populates the relevant fields on the Search Result screen with data received from the SQL query
 			{
 				errorMessage.setText("Searching...") ;
 				
 				String name = result.getString("name") ;
 				searchResultController.setPokeName(name) ;
+				
+				String forms = result.getString("multipleforms") ;
+				if(forms.equals("Y"))
+				{
+					searchResultController.setFormChoice(true) ;
+					
+					String sqlForm = "SELECT * FROM pokemonforms where UPPER(pokename) = UPPER('" + name + "')" ;
+					Statement statementForm = connection.createStatement() ;
+					ResultSet resultForm = statementForm.executeQuery(sqlForm) ;
+					resultForm.next() ;
+					searchResultController.setFormChange(resultForm.getString("howtochange")) ;
+					
+					do
+					{
+						searchResultController.addForm(resultForm.getString("formname")) ;
+					}while(resultForm.next());
+				}
+				else {
+					searchResultController.setFormChoice(false) ;
+				}
+							
+				String catchRate = result.getString("catchrate") ;
+				searchResultController.setCatchRate(catchRate) ;
 				
 				String type1 = result.getString("type1") ;
 				searchResultController.setPrimaryType(type1) ;
@@ -219,12 +278,12 @@ public class MainSearchController  implements Initializable
 				pokeFound = true ;
 			}
 	
-			if(!pokeFound && nameSearch.isSelected())
+			if(!pokeFound && nameSearch.isSelected()) //If the name search doesn't find an exact search, it attempts to search for something close
 			{
 				fuzzySearch(searchResultController, connection) ;
 			}
 			
-			if(pokeFound)
+			if(pokeFound) //If a result is found, switches to the newly populated screen
 			{
 				//root = FXMLLoader.load(getClass().getResource("SearchResult.fxml")) ;
 				stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
@@ -236,20 +295,19 @@ public class MainSearchController  implements Initializable
 		        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
 		        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
 				stage.show() ;
-				
-				
-				
+								
 				DBQuery.disconnect(connection) ;
 			}
 		}
 	}
 	
-	public void closeProgram(ActionEvent actionEvent)
+	public void closeProgram(ActionEvent actionEvent) //Closes program windows
 	{
 		stage = (Stage) mainWindow.getScene().getWindow() ;
 		stage.close() ;
 	}
 	
+	//Allows the program to search for near matches on ability searches
 	public void fuzzyAbilitySearch(AbilityInfoController controller, Connection connection) throws SQLException, IOException
 	{
 		String abilityText = null ;
@@ -279,11 +337,11 @@ public class MainSearchController  implements Initializable
 		}
 		else
 		{
-
 			errorMessage.setText("No results found.") ;
 		}
 	}
-	
+
+	//Allows the program to search for near matches on name searches
 	public void fuzzySearch(SearchResultController searchResultController, Connection connection) throws SQLException
 	{
 	
@@ -305,6 +363,29 @@ public class MainSearchController  implements Initializable
 			String name = result.getString("name") ;
 			searchResultController.setPokeName(name) ;
 			
+			String forms = result.getString("multipleforms") ;
+			if(forms.equals("Y"))
+			{
+				searchResultController.setFormChoice(true) ;
+				
+				String sqlForm = "SELECT * FROM pokemonforms where UPPER(pokename) = UPPER('" + name + "')" ;
+				Statement statementForm = connection.createStatement() ;
+				ResultSet resultForm = statementForm.executeQuery(sqlForm) ;
+				resultForm.next() ;
+				searchResultController.setFormChange(resultForm.getString("howtochange")) ;
+				
+				do
+				{
+					searchResultController.addForm(resultForm.getString("formname")) ;
+				}while(resultForm.next());
+			}
+			else {
+				searchResultController.setFormChoice(false) ;
+			}
+			
+			String catchRate = result.getString("catchrate") ;
+			searchResultController.setCatchRate(catchRate) ;
+			
 			String type1 = result.getString("type1") ;
 			searchResultController.setPrimaryType(type1) ;
 			
@@ -316,7 +397,6 @@ public class MainSearchController  implements Initializable
 			int nationalDexNum = result.getInt("nationaldex") ;
 			searchResultController.setNationalDexNum(nationalDexNum) ;
 			searchResultController.setSprite(nationalDexNum) ;
-			System.out.println(nationalDexNum) ;
 			
 			String evoMethod = result.getString("evolutionMethod") ;
 			searchResultController.setEvolutionMethod(evoMethod) ;
@@ -369,6 +449,7 @@ public class MainSearchController  implements Initializable
 		}
 	}
 	
+	//Sets data for Pokemon with Alolan forms under the Alola tab
 	public void setAlolanData(SearchResultController searchResultController, Connection connect, String name, int number) throws SQLException
 	{
 		String sqlA = "select * from ALOLAFORMS where UPPER(name) = UPPER('" + name +"')" ;
@@ -402,7 +483,8 @@ public class MainSearchController  implements Initializable
 		}
 		searchResultController.setHiddenAbilityButtonTextA(hiddenAbilityText) ;		
 	}
-	
+
+	//Sets data for Pokemon with Galarian forms under the Galar tab
 	public void setGalarianData(SearchResultController searchResultController, Connection connect, String name, int number) throws SQLException
 	{
 		String sqlG = "select * from GALARFORMS where name = '" + name +"'" ;
@@ -437,6 +519,8 @@ public class MainSearchController  implements Initializable
 		searchResultController.setHiddenAbilityButtonTextG(hiddenAbilityText) ;	
 	}
 	
+	
+	//Sets the effectiveness of the type against a chosen type
 	public void setBugEffect(String effect)
 	{
 		bugEffect.setText(effect) ;
@@ -527,17 +611,9 @@ public class MainSearchController  implements Initializable
 		psychicEffect.setText(effect) ;
 	}
 
+	//Calculates and sets the effectiveness of each individual type against any two type combination
 	public void setEffectiveness()
-	{
-		//order of types: normal, fire, water, grass, electric
-		//ice, fighting, poison, ground, flying, psychic, bug, 
-		//rock, ghost, dark, dragon, steel, fairy
-		
-		//String typeFirst = type1.getValue() ;
-		
-		//if(type2.getValu
-		//String typeSecond = type2.getValue() ;
-		
+	{		
 		double[] typeChart ;
 		
 		if(type2.getValue() == null)
@@ -567,4 +643,273 @@ public class MainSearchController  implements Initializable
 		this.setSteelEffect(Matchups.getMultiplyer(typeChart[16])) ;
 		this.setFairyEffect(Matchups.getMultiplyer(typeChart[17])) ;
 	}
+
+	//Takes a nature and sets the stats it effects or takes a stat combination and sets the nature that provides that combination
+	public void setNatures()
+	{
+		if(natureRadio.isSelected())
+		{
+			String nature = natureDropdown.getValue() ;
+			
+			switch(nature) {
+					case "Adamant": 
+						increasedStatDropdown.setValue("Attack") ;
+						decreasedStatDropdown.setValue("Special Attack") ;
+						break ;
+					case "Bashful":
+						increasedStatDropdown.setValue("Special Attack") ;
+						decreasedStatDropdown.setValue("Special Attack") ;
+						break ;
+					case "Bold":
+						increasedStatDropdown.setValue("Defense") ;
+						decreasedStatDropdown.setValue("Attack") ;
+						break ;
+					case "Brave":
+						increasedStatDropdown.setValue("Attack") ;
+						decreasedStatDropdown.setValue("Speed") ;
+						break ;
+					case "Calm":
+						increasedStatDropdown.setValue("Special Defense") ;
+						decreasedStatDropdown.setValue("Attack") ;
+						break ;
+					case "Careful":
+						increasedStatDropdown.setValue("Special Defense") ;
+						decreasedStatDropdown.setValue("Special Attack") ;
+						break ;
+					case "Docile":
+						increasedStatDropdown.setValue("Defense") ;
+						decreasedStatDropdown.setValue("Defense") ;
+						break ;
+					case "Gentle":
+						increasedStatDropdown.setValue("Special Defense") ;
+						decreasedStatDropdown.setValue("Defense") ;
+						break ;
+					case "Hardy":
+						increasedStatDropdown.setValue("Attack") ;
+						decreasedStatDropdown.setValue("Attack") ;
+						break ;
+					case "Hasty":
+						increasedStatDropdown.setValue("Speed") ;
+						decreasedStatDropdown.setValue("Defense") ;
+						break ;
+					case "Impish":
+						increasedStatDropdown.setValue("Defense") ;
+						decreasedStatDropdown.setValue("Special Attack") ;
+						break ;
+					case "Jolly":
+						increasedStatDropdown.setValue("Speed") ;
+						decreasedStatDropdown.setValue("Special Attack") ;
+						break ;
+					case "Lax":
+						increasedStatDropdown.setValue("Defense") ;
+						decreasedStatDropdown.setValue("Special Defense") ;
+						break ;
+					case "Lonely":
+						increasedStatDropdown.setValue("Attack") ;
+						decreasedStatDropdown.setValue("Defense") ;
+						break ;
+					case "Mild":
+						increasedStatDropdown.setValue("Special Attack") ;
+						decreasedStatDropdown.setValue("Defense") ;
+						break ;
+					case "Modest":
+						increasedStatDropdown.setValue("Special Attack") ;
+						decreasedStatDropdown.setValue("Attack") ;
+						break ;
+					case "Naive":
+						increasedStatDropdown.setValue("Speed") ;
+						decreasedStatDropdown.setValue("Special Defense") ;
+						break ;
+					case "Naughty":			
+						increasedStatDropdown.setValue("Attack") ;
+						decreasedStatDropdown.setValue("Special Defense") ;
+						break ;	
+					case "Quiet":
+						increasedStatDropdown.setValue("Special Attack") ;
+						decreasedStatDropdown.setValue("Speed") ;
+						break ;
+					case "Quirky":
+						increasedStatDropdown.setValue("Special Defense") ;
+						decreasedStatDropdown.setValue("Special Defense") ;
+						break ;
+					case "Rash":
+						increasedStatDropdown.setValue("Special Attack") ;
+						decreasedStatDropdown.setValue("Special Defense") ;
+						break ;
+					case "Relaxed":
+						increasedStatDropdown.setValue("Defense") ;
+						decreasedStatDropdown.setValue("Speed") ;
+						break ;
+					case "Sassy":
+						increasedStatDropdown.setValue("Special Defense") ;
+						decreasedStatDropdown.setValue("Speed") ;
+						break ;
+					case "Serious":
+						increasedStatDropdown.setValue("Speed") ;
+						decreasedStatDropdown.setValue("Speed") ;
+						break ;
+					case "Timid":
+						increasedStatDropdown.setValue("Speed") ;
+						decreasedStatDropdown.setValue("Attack") ;
+						break ;
+					default: 
+						increasedStatDropdown.setValue("None") ;
+						decreasedStatDropdown.setValue("None") ;						
+						break ;					
+			}
+		}
+		else {
+			String incStat = increasedStatDropdown.getValue() ;
+			String decStat = decreasedStatDropdown.getValue() ;
+			
+			
+			if(incStat.equals("Attack"))
+			{
+				if(decStat.equals("Attack"))
+				{
+					natureDropdown.setValue("Hardy") ;
+				}
+				else if(decStat.equals("Defense"))
+				{
+					natureDropdown.setValue("Lonely") ;
+				}
+				else if(decStat.equals("Special Attack"))
+				{
+					natureDropdown.setValue("Adamant") ;
+				}
+				else if(decStat.equals("Special Defense"))
+				{
+					natureDropdown.setValue("Naughty") ;
+				}
+				else if(decStat.equals("Speed"))
+				{
+					natureDropdown.setValue("Brave") ;
+				}			
+				else {
+					natureDropdown.setValue("None") ;
+				}
+			}
+			else if(incStat.equals("Defense"))
+			{
+				if(decStat.equals("Attack"))
+				{
+					natureDropdown.setValue("Bold") ;
+				}
+				else if(decStat.equals("Defense"))
+				{
+					natureDropdown.setValue("Docile") ;
+				}
+				else if(decStat.equals("Special Attack"))
+				{
+					natureDropdown.setValue("Impish") ;
+				}
+				else if(decStat.equals("Special Defense"))
+				{
+					natureDropdown.setValue("Lax") ;
+				}
+				else if(decStat.equals("Speed"))
+				{
+					natureDropdown.setValue("Relaxed") ;
+				}	
+				else {
+					natureDropdown.setValue("None") ;
+				}
+			}
+			else if(incStat.equals("Special Attack"))
+			{
+				if(decStat.equals("Attack"))
+				{
+					natureDropdown.setValue("Modest") ;
+				}
+				else if(decStat.equals("Defense"))
+				{
+					natureDropdown.setValue("Mild") ;
+				}
+				else if(decStat.equals("Special Attack"))
+				{
+					natureDropdown.setValue("Bashful") ;
+				}
+				else if(decStat.equals("Special Defense"))
+				{
+					natureDropdown.setValue("Rash") ;
+				}
+				else if(decStat.equals("Speed"))
+				{
+					natureDropdown.setValue("Quiet") ;
+				}		
+				else {
+					natureDropdown.setValue("None") ;
+				}
+			}
+			else if(incStat.equals("Special Defense"))
+			{
+				if(decStat.equals("Attack"))
+				{
+					natureDropdown.setValue("Calm") ;
+				}
+				else if(decStat.equals("Defense"))
+				{
+					natureDropdown.setValue("Gentle") ;
+				}
+				else if(decStat.equals("Special Attack"))
+				{
+					natureDropdown.setValue("Careful") ;
+				}
+				else if(decStat.equals("Special Defense"))
+				{
+					natureDropdown.setValue("Quirky") ;
+				}
+				else if(decStat.equals("Speed"))
+				{
+					natureDropdown.setValue("Sassy") ;
+				}	
+				else {
+					natureDropdown.setValue("None") ;
+				}
+			}
+			else if(incStat.equals("Speed"))
+			{
+				if(decStat.equals("Attack"))
+				{
+					natureDropdown.setValue("Timid") ;
+				}
+				else if(decStat.equals("Defense"))
+				{
+					natureDropdown.setValue("Hasty") ;
+				}
+				else if(decStat.equals("Special Attack"))
+				{
+					natureDropdown.setValue("Jolly") ;
+				}
+				else if(decStat.equals("Special Defense"))
+				{
+					natureDropdown.setValue("Naive") ;
+				}
+				else if(decStat.equals("Speed"))
+				{
+					natureDropdown.setValue("Serious") ;
+				}		
+				else {
+					natureDropdown.setValue("None") ;
+				}
+			}
+			else{
+				natureDropdown.setValue("None") ;
+			}
+			
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

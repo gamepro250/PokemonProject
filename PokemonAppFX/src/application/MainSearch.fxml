@@ -268,5 +268,40 @@
             </GridPane>
          </content>
     </Tab>
+      <Tab text="Natures">
+         <content>
+            <GridPane styleClass="background">
+               <children>
+                  <ComboBox fx:id="increasedStatDropdown" onAction="#setNatures" prefWidth="150.0" promptText="Increased Stat" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <ComboBox fx:id="decreasedStatDropdown" layoutX="250.0" layoutY="110.0" onAction="#setNatures" prefWidth="150.0" promptText="Decreased Stat" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                  <ComboBox fx:id="natureDropdown" layoutX="500.0" layoutY="214.0" onAction="#setNatures" prefWidth="150.0" promptText="Nature" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <RadioButton fx:id="statsRadio" mnemonicParsing="false" styleClass="search-radio" text="Stats" translateY="-20.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="natures" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="natureRadio" layoutX="10.0" layoutY="59.0" mnemonicParsing="false" selected="true" styleClass="search-radio" text="Nature" toggleGroup="$natures" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Input Type:" translateY="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Nature" translateX="-10.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Increased Stat" translateX="10.0" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="search-type" text="Decreased Stat" translateX="10.0" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
   </tabs>
 </TabPane>

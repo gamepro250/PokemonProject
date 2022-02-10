@@ -1,19 +1,23 @@
 package application;
 
 import java.io.IOException ;
+import java.net.URL ;
 import java.sql.Connection ;
 import java.sql.ResultSet ;
 import java.sql.SQLException ;
 import java.sql.Statement ;
+import java.util.ResourceBundle ;
 
 import database.DBQuery ;
 import javafx.event.ActionEvent ;
 import javafx.event.Event ;
 import javafx.fxml.FXML ;
 import javafx.fxml.FXMLLoader ;
+import javafx.fxml.Initializable ;
 import javafx.scene.Parent ;
 import javafx.scene.Scene ;
 import javafx.scene.control.Button ;
+import javafx.scene.control.ComboBox ;
 import javafx.scene.control.Label ;
 import javafx.scene.control.MenuItem ;
 import javafx.scene.control.Tab ;
@@ -26,7 +30,7 @@ import javafx.stage.Modality ;
 import javafx.stage.Stage ;
 import types.Matchups ;
 
-public class SearchResultController
+public class SearchResultController implements Initializable
 {
 	private Stage stage ;
 	private Scene scene ;
@@ -36,6 +40,11 @@ public class SearchResultController
 	@FXML private Button newSearchButton2 ;
 	@FXML Tab alolanTab ;
 	@FXML Tab galarianTab ;
+	
+	@FXML ComboBox<String> formChoice ;
+	@FXML public Label formTitle ;
+	@FXML public Label formChangeTitle ;
+	@FXML public TextArea formChangeInfo ;
 	
 	@FXML public Text normalEffect ;
 	@FXML public Text fireEffect ;
@@ -97,6 +106,11 @@ public class SearchResultController
 	@FXML public Label pokeName ;
 	@FXML public Label pokeNameA ;
 	@FXML public Label pokeNameG ;
+	@FXML public Label pokeNameL ;
+	
+	@FXML public Label catchRate ;
+	@FXML public Label catchRateA ;
+	@FXML public Label catchRateG ;
 	
 	@FXML public Label pokeType ;
 	
@@ -136,7 +150,19 @@ public class SearchResultController
 	@FXML public ImageView pokemonSpriteA ;
 	@FXML public ImageView pokemonSpriteG ;
 	
+	@FXML public TextArea locationInfo ;
+	@FXML ComboBox<String> regionSelect ;
 	
+	public void initialize(URL url, ResourceBundle resourceBundle)
+	{
+		//Sets location drop down with available Regions
+		regionSelect.getItems().addAll("Unova", "Kalos") ;
+		
+		//Sets default for location search
+		regionSelect.setValue("Unova") ;
+	}
+
+	//Sets the effectiveness of the type against a chosen type
 	public void setBugEffect(String effect)
 	{
 		bugEffect.setText(effect) ;
@@ -209,7 +235,8 @@ public class SearchResultController
 	{
 		psychicEffect.setText(effect) ;
 	}
-	
+
+	//Sets the effectiveness of the type against a chosen type for Alolan forms
 	public void setBugEffectA(String effect)
 	{
 		bugEffectA.setText(effect) ;
@@ -282,7 +309,8 @@ public class SearchResultController
 	{
 		psychicEffectA.setText(effect) ;
 	}	
-		
+
+	//Sets the effectiveness of the type against a chosen type for Galarian forms	
 	public void setBugEffectG(String effect)
 	{
 		bugEffectG.setText(effect) ;
@@ -356,6 +384,7 @@ public class SearchResultController
 		psychicEffectG.setText(effect) ;
 	}	
 	
+	//Sets the name label for the Pokemon
 	public void setPokeName(String name)
 	{
 		pokeName.setText(name) ;
@@ -363,32 +392,47 @@ public class SearchResultController
 		pokeNameG.setText(name) ;
 	}	
 	
+	//Sets the capture rate of the Pokemon
+	public void setCatchRate(String rate)
+	{
+		catchRate.setText(rate) ;
+		catchRateA.setText(rate) ;
+		catchRateG.setText(rate) ;
+	}
+	
+	//Sets the primary type of the Pokemon
 	public void setPrimaryType(String type)
 	{
 		primaryType.setText(type) ;
-	}		
+	}	
+	//Sets the primary type of the Alolan form
 	public void setPrimaryTypeA(String type)
 	{
 		primaryTypeA.setText(type) ;
 	}		
+	//Sets the primary type of the Galarian form
 	public void setPrimaryTypeG(String type)
 	{
 		primaryTypeG.setText(type) ;
 	}
-	
+
+	//Sets the secondary type of the Pokemon
 	public void setSecondaryType(String type)
 	{
 		SecondaryType.setText(type) ;
 	}	
+	//Sets the secondary type of the Alolan form
 	public void setSecondaryTypeA(String type)
 	{
 		SecondaryTypeA.setText(type) ;
 	}	
+	//Sets the secondary type of the Galarian form
 	public void setSecondaryTypeG(String type)
 	{
 		SecondaryTypeG.setText(type) ;
 	}
 	
+	//Sets the sprite image for the Pokemon
 	public void setSprite(int number)
 	{
 		String stringNum = "" ;
@@ -406,6 +450,17 @@ public class SearchResultController
 		Image pokemon = new Image(sprite,400,400,true,true) ;
 		pokemonSprite.setImage(pokemon) ;
 	}
+
+	//Sets the sprite image for the Pokemon when a different form is selected
+	public void setFormSprite(String imageName)
+	{
+		
+		String sprite = "file:resources/images/" + imageName + ".png" ;
+		Image pokemon = new Image(sprite,400,400,true,true) ;
+		pokemonSprite.setImage(pokemon) ;
+	}
+
+	//Sets the sprite image for the Alolan form
 	public void setSpriteA(int number)
 	{
 		String stringNum = "" ;
@@ -423,6 +478,8 @@ public class SearchResultController
 		Image pokemon = new Image(sprite,400,400,true,true) ;
 		pokemonSpriteA.setImage(pokemon) ;
 	}
+
+	//Sets the sprite image for the Galarian form
 	public void setSpriteG(int number)
 	{
 		String stringNum = "" ;
@@ -441,6 +498,7 @@ public class SearchResultController
 		pokemonSpriteG.setImage(pokemon) ;
 	}
 	
+	//Sets the dex number of the selected Pokemon
 	public void setNationalDexNum(int number)
 	{
 		String stringNum = "#";
@@ -455,6 +513,7 @@ public class SearchResultController
 		}
 		nationDexNum.setText(stringNum) ;
 	}
+	//Sets the dex number of the selected Pokemon on the Alola tab
 	public void setAlolanDexNum(int number)
 	{
 		String stringNum = "#";
@@ -469,6 +528,7 @@ public class SearchResultController
 		}
 		alolaDexNum.setText(stringNum) ;
 	}
+	//Sets the dex number of the selected Pokemon on the Galar tab
 	public void setGalarDexNum(int number)
 	{
 		String stringNum = "#";
@@ -484,6 +544,7 @@ public class SearchResultController
 		galarDexNum.setText(stringNum) ;
 	}
 	
+	//Allows for hiding of Label if no ability is present 
 	public void setAbility2Label(String type)
 	{
 		secondaryAbilityLabel.setText(type) ;
@@ -510,6 +571,7 @@ public class SearchResultController
 		hiddenAbilityLabelG.setText(type) ;
 	}
 	
+	//Sets the button's text to the name of the Pokemon's ability
 	public void setAbility1ButtonText(String type)
 	{
 		primaryAbilityButtonText.setText(type) ;
@@ -539,6 +601,7 @@ public class SearchResultController
 		secondaryAbilityButtonTextG.setText(type) ;
 	}
 	
+	//Allows hiding of buttons if no ability is available
 	public void hideAbility2Button() 
 	{
 		secondaryAbilityButtonText.setVisible(false) ;
@@ -551,7 +614,8 @@ public class SearchResultController
 	{
 		secondaryAbilityButtonTextG.setVisible(false) ;
 	}
-	
+
+	//Sets the button's text to the name of the Pokemon's ability
 	public void setHiddenAbilityButtonText(String type)
 	{
 		hiddenAbilityButtonText.setText(type) ;
@@ -564,7 +628,8 @@ public class SearchResultController
 	{
 		hiddenAbilityButtonTextG.setText(type) ;
 	}
-	
+
+	//Allows hiding of buttons if no ability is available
 	public void hideAbilityHiddenButton() 
 	{
 		hiddenAbilityButtonText.setVisible(false) ;
@@ -578,6 +643,7 @@ public class SearchResultController
 		hiddenAbilityButtonTextG.setVisible(false) ;
 	}
 	
+	//When an ability button is clicked, an ability search is executed using the text on the button
 	public void showAbilityInfo(Event e) throws IOException, SQLException
 	{					
 		String abilityText = null ;
@@ -602,12 +668,15 @@ public class SearchResultController
 		
 		abilityInfoController.setAbilityDescriptionText(abilityText) ;
 		
+		DBQuery.disconnect(connection) ;
+		
 		Stage stage = new Stage() ;
 		stage.setScene(new Scene(root)) ;  
 		stage.initModality(Modality.APPLICATION_MODAL) ;
 		stage.show() ;
 	}
 	
+	//Sets the Pokemon's method to evolve
 	public void setEvolutionMethod(String type)
 	{
 		evolutionMethod.setText(type) ;
@@ -621,11 +690,13 @@ public class SearchResultController
 		evolutionMethodG.setText(type) ;
 	}
 	
+	//Sets whether or not a Pokemon has a mega evolution
 	public void setHasMega(String type)
 	{
 		hasMega.setText(type) ;
 	}
-	
+
+	//Calculates and sets the effectiveness of each individual type against any two type combination
 	public void setEffectiveness(String type1, String type2)
 	{
 		//order of types: normal, fire, water, grass, electric
@@ -732,6 +803,7 @@ public class SearchResultController
 		this.setFairyEffectG(Matchups.getMultiplyer(typeChart[17])) ;
 	}
 
+	//Allows the user to return to the original search window to search a new Pokemon when the "New Search" option is chosen in the File Menu
 	public void newSearch(ActionEvent event) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSearch.fxml")) ;
@@ -742,6 +814,7 @@ public class SearchResultController
 		stage.show() ;
 	}
 	
+	//Allows the user to return to the original search window to search a new Pokemon when the "New Search" button is clicked
 	public void newSearch2(ActionEvent event) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainSearch.fxml")) ;
@@ -752,6 +825,7 @@ public class SearchResultController
 		stage.show() ;
 	}
 	
+	//Allows the user to close the window with the "Close" option from the File Menu
 	public void closeProgram(ActionEvent actionEvent)
 	{
 		stage = (Stage) mainWindow.getScene().getWindow() ;
@@ -759,14 +833,249 @@ public class SearchResultController
 	}
 
 	
+	//Diables the Alola tab when no Alolan form is present
 	public void disableAlola()
 	{
 		alolanTab.setDisable(true) ;		
 	}
-	
+
+	//Diables the Alola tab when no Galarian form is present
 	public void disableGalar()
 	{
 		galarianTab.setDisable(true) ;		
+	}
+
+	//Allows the form changing options to be hidden when no alternate forms are present
+	public void setFormChoice(boolean visibility)
+	{
+		formChoice.setVisible(visibility) ;
+		formTitle.setVisible(visibility) ;
+		formChangeTitle.setVisible(visibility) ;
+		formChangeInfo.setVisible(visibility) ; ;
+	}
+	
+	//Allows adding of new form names to the form dropdown menu
+	public void addForm(String formName)
+	{
+		formChoice.getItems().add(formName) ;
+		formChoice.getSelectionModel().selectFirst();
+	}
+	
+	//Sets the text describing how to achieve alternate forms
+	public void setFormChange(String changeText)
+	{
+		formChangeInfo.setText(changeText) ;
+	}
+	
+	//Changes the relevant information (image, type, effectiveness, etc.) when a new form is selected
+	public void changeForm() throws SQLException
+	{
+		Connection connection = DBQuery.connect() ;
+		
+		String sqlForm = "SELECT * FROM pokemonforms where UPPER(pokename) = UPPER('" + pokeName.getText() + "') and UPPER(formname) = UPPER('" + formChoice.getValue() + "')" ;
+		Statement statementForm = connection.createStatement() ;
+		ResultSet resultForm = statementForm.executeQuery(sqlForm) ;
+		
+		resultForm.next() ;
+		
+		String type1 = resultForm.getString("type1") ;
+		setPrimaryType(type1) ;
+		
+		String type2 = resultForm.getString("type2") ;
+		setSecondaryType(type2) ;
+		
+		setEffectiveness(type1, type2) ;
+		
+		String ability1Text = resultForm.getString("ability1") ;
+		setAbility1ButtonText(ability1Text) ;
+		
+		String ability2Text = resultForm.getString("ability2") ;
+		if(ability2Text == null)
+		{
+			setAbility2Label("") ;
+			hideAbility2Button() ;
+		}
+		setAbility2ButtonText(ability2Text) ;
+		
+		String hiddenAbilityText = resultForm.getString("abilityhidden") ;
+		if(hiddenAbilityText == null)
+		{
+			setHiddenAbilityLabel("") ;
+			hideAbilityHiddenButton() ;
+		}
+		setHiddenAbilityButtonText(hiddenAbilityText) ;
+		
+		String formImage  = resultForm.getString("imagename") ;
+		setFormSprite(formImage) ;
+		
+		String changeMethod = resultForm.getString("howtochange") ;
+		setFormChange(changeMethod) ;
+		
+		DBQuery.disconnect(connection) ;
+		
+	}
+	
+	//Displays information on where and how to encounter each Pokemon in the available regions
+	public void setLocationInfo() throws SQLException
+	{
+		pokeNameL.setText(pokeName.getText().toUpperCase() + " Locations") ;
+		
+		Connection connection = DBQuery.connect() ;
+		
+		if(regionSelect.getValue().equals("Unova"))
+		{
+			String locations = "" ;
+			String header = "                Location                 |   Encounter Method   |           Seasons Available          |    Rarity   |            Games Available           |      Level Range      |                                 Special                                  \n" ;
+			String divider = "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n" ;
+			
+			locations += "Rarity: Common (21-100%) Uncommon (6-20%) Rare (1-5%)\n\n" ;
+			locations += header + divider ;
+	
+			String sql = "SELECT * FROM unovalocations where UPPER(pokemon) = UPPER('" + pokeName.getText() + "')" ; //Create SELECT statement
+	
+			Statement statement = connection.createStatement() ; //Create statement on the connection	
+			ResultSet result = statement.executeQuery(sql) ; //Create ResultSet for result to be stored
+			
+			if(result.next())
+			{				
+				do
+				{
+					String place = result.getString("Location") ;
+					place = String.format("%-" + 40 + "s", place) ;
+					String method = result.getString("Method") ;
+					method = String.format("%-" + 20 + "s", method) ;				
+					String season = result.getString("Seasons") ;
+					season = String.format("%-" +35 + "s", season) ;
+					String rarity = result.getString("Rarity") ;
+					rarity = String.format("%-" + 10 + "s", rarity) ;
+					String levels = result.getString("Levels") ;
+					levels = String.format("%-" + 15 + "s", levels) ;
+					String  gameFound = "" ;
+					
+					locations += place + " | " + method + " |  " + season + " |  " + rarity + " |  " ;
+					Boolean black = false;
+					Boolean white = false ;
+					Boolean black2 = false ;
+					
+					if(result.getString("Black").equals("Y"))
+					{
+							gameFound += "Black" ;
+							black = true ;
+					}
+					if(result.getString("White").equals("Y") && black)
+					{
+						gameFound += ", White" ;
+						white = true ;
+					}
+					else if(result.getString("White").equals("Y")){
+						gameFound += "White" ;
+						white = true ;
+					}
+					if(result.getString("Black2").equals("Y") && (black||white))
+					{
+						gameFound += ", Black 2" ;
+						black2 = true ;
+					}
+					else if(result.getString("Black2").equals("Y")){
+						gameFound += "Black 2" ;
+						black2 = true ;
+					}
+					if(result.getString("White2").equals("Y") && (black||white||black2))
+					{
+						gameFound += ", White 2" ;
+						white = true ;
+					}
+					else if(result.getString("White2").equals("Y")){
+						gameFound += "White 2" ;
+					}
+							
+		
+					gameFound = String.format("%-" + 35 + "s", gameFound) ;
+					String special = result.getString("Special") ;				
+					if(special == null)
+					{
+						special = "" ;
+					}			
+					special = String.format("%-" + 70 + "s", special) ;	
+					
+					locations += gameFound + " |       " + levels + " | " + special ;
+					
+							
+					locations += "\n" ;
+				}while(result.next()) ;
+				
+				locationInfo.setText(locations) ;		
+			}
+			else {
+				locationInfo.setText("This Pokemon is not available in this region") ;
+			}
+		}
+		if(regionSelect.getValue().equals("Kalos"))
+		{
+			String locations = "" ;
+			String header = "                Location                 |   Encounter Method   |    Rarity   |       Games Available      |     Level Range    |                                 Special                                  \n" ;
+			String divider = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n" ;
+			
+			locations += "Rarity: Common (21-100%) Uncommon (6-20%) Rare (1-5%)\n\n" ;
+			locations += header + divider ;
+	
+			String sql = "SELECT * FROM kaloslocations where UPPER(pokemon) = UPPER('" + pokeName.getText() + "')" ; //Create SELECT statement
+	
+			Statement statement = connection.createStatement() ; //Create statement on the connection	
+			ResultSet result = statement.executeQuery(sql) ; //Create ResultSet for result to be stored
+			
+			if(result.next())
+			{				
+				do
+				{
+					String place = result.getString("Location") ;
+					place = String.format("%-" + 40 + "s", place) ;
+					String method = result.getString("Method") ;
+					method = String.format("%-" + 20 + "s", method) ;
+					String rarity = result.getString("Rarity") ;
+					rarity = String.format("%-" + 10 + "s", rarity) ;
+					String levels = result.getString("Levels") ;
+					levels = String.format("%-" + 20 + "s", levels) ;
+					String  gameFound = "" ;
+					
+					locations += place + " | " + method + " |  " + rarity + " |  " ;
+					Boolean x = false;
+					
+					if(result.getString("X").equals("Y"))
+					{
+						gameFound += "          X" ;
+						x = true ;
+					}
+					if(result.getString("Y").equals("Y") && x)
+					{
+						gameFound += " and Y" ;
+					}
+					else if(result.getString("Y").equals("Y")){
+						gameFound += "          Y" ;
+					}							
+		
+					gameFound = String.format("%-" + 25 + "s", gameFound) ;
+					String special = result.getString("Special") ;				
+					if(special == null)
+					{
+						special = "" ;
+					}			
+					special = String.format("%-" + 70 + "s", special) ;	
+					
+					locations += gameFound + " | " + levels + " | " + special ;
+					 
+							
+					locations += "\n" ;
+				}while(result.next()) ;
+				
+				locationInfo.setText(locations) ;		
+			}
+			else {
+				locationInfo.setText("This Pokemon is not available in this region") ;
+			}
+		}
+		
+		DBQuery.disconnect(connection) ;
 	}
 }
 
